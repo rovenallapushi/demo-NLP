@@ -1,0 +1,3 @@
+# Here you put any directory or files of things that u don't want to track when using git
+
+.vscode
