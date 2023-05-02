@@ -322,5 +322,26 @@ In this example, we will use them to solve a spam classification task
 
 """
 
-spam_df = pd.read_csv("data/SMSSpamCollection.tsv", sep="\t", header=None, names=["label", "text"])
+spam_df = pd.read_csv("./SMSSpamCollection.tsv", sep="\t", header=None, names=["label", "text"])
 spam_df
+
+# do one-ot encoding of the labels
+
+label_encoder = LabelEncoder()
+spam_df["label"] = label_encoder.fit_transform(spam_df['label'])
+spam_df
+
+
+"""
+Building a classification model
+Standard ML approach:
+ 1. Preprocess the text
+    a. lowercasing
+    b. tokenization
+    c. stopword removal
+2. Create a sentence embedding of each SMS as the average of 
+word embeddings in that sentence
+
+"""
+nltk.download('stopwords')
+
